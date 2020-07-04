@@ -49,12 +49,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -168,18 +177,140 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CustomersController.cs" />
+    <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MoviesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202006291617374_InitialModel.cs" />
+    <Compile Include="Migrations\202006291617374_InitialModel.Designer.cs">
+      <DependentUpon>202006291617374_InitialModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006291646159_AddIsSubscribedToCustomer.cs" />
+    <Compile Include="Migrations\202006291646159_AddIsSubscribedToCustomer.Designer.cs">
+      <DependentUpon>202006291646159_AddIsSubscribedToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006291652451_AddMembershipType.cs" />
+    <Compile Include="Migrations\202006291652451_AddMembershipType.Designer.cs">
+      <DependentUpon>202006291652451_AddMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006291704211_PopulateMembershipTypes.cs" />
+    <Compile Include="Migrations\202006291704211_PopulateMembershipTypes.Designer.cs">
+      <DependentUpon>202006291704211_PopulateMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006291716452_ApplyAnnotationsToCustomerName.cs" />
+    <Compile Include="Migrations\202006291716452_ApplyAnnotationsToCustomerName.Designer.cs">
+      <DependentUpon>202006291716452_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006291806213_CreateNameColumnMemebershipType.cs" />
+    <Compile Include="Migrations\202006291806213_CreateNameColumnMemebershipType.Designer.cs">
+      <DependentUpon>202006291806213_CreateNameColumnMemebershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006291807301_AddMemebershipTypeNames.cs" />
+    <Compile Include="Migrations\202006291807301_AddMemebershipTypeNames.Designer.cs">
+      <DependentUpon>202006291807301_AddMemebershipTypeNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006291820433_AddBirthDateToCustomer.cs" />
+    <Compile Include="Migrations\202006291820433_AddBirthDateToCustomer.Designer.cs">
+      <DependentUpon>202006291820433_AddBirthDateToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006291832081_AddBirthDateToCustomer1.cs" />
+    <Compile Include="Migrations\202006291832081_AddBirthDateToCustomer1.Designer.cs">
+      <DependentUpon>202006291832081_AddBirthDateToCustomer1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006300526406_AddGenreToMovie.cs" />
+    <Compile Include="Migrations\202006300526406_AddGenreToMovie.Designer.cs">
+      <DependentUpon>202006300526406_AddGenreToMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006300529110_AddGenreData.cs" />
+    <Compile Include="Migrations\202006300529110_AddGenreData.Designer.cs">
+      <DependentUpon>202006300529110_AddGenreData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006300545078_ChangeGenreIdToByte.cs" />
+    <Compile Include="Migrations\202006300545078_ChangeGenreIdToByte.Designer.cs">
+      <DependentUpon>202006300545078_ChangeGenreIdToByte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006300554113_ModifyMovieModel.cs" />
+    <Compile Include="Migrations\202006300554113_ModifyMovieModel.Designer.cs">
+      <DependentUpon>202006300554113_ModifyMovieModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006300600570_ModifyMovieModel1.cs" />
+    <Compile Include="Migrations\202006300600570_ModifyMovieModel1.Designer.cs">
+      <DependentUpon>202006300600570_ModifyMovieModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006300605342_ModifyMovieModel2.cs" />
+    <Compile Include="Migrations\202006300605342_ModifyMovieModel2.Designer.cs">
+      <DependentUpon>202006300605342_ModifyMovieModel2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006300607498_ModifyMovieModel3.cs" />
+    <Compile Include="Migrations\202006300607498_ModifyMovieModel3.Designer.cs">
+      <DependentUpon>202006300607498_ModifyMovieModel3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202006300609390_SetDefaultDateTimeToCreatedDate.cs" />
+    <Compile Include="Migrations\202006300609390_SetDefaultDateTimeToCreatedDate.Designer.cs">
+      <DependentUpon>202006300609390_SetDefaultDateTimeToCreatedDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007011130392_ChangeMovieTableStructure.cs" />
+    <Compile Include="Migrations\202007011130392_ChangeMovieTableStructure.Designer.cs">
+      <DependentUpon>202007011130392_ChangeMovieTableStructure.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007011146301_ChangeMovieTableStructure1.cs" />
+    <Compile Include="Migrations\202007011146301_ChangeMovieTableStructure1.Designer.cs">
+      <DependentUpon>202007011146301_ChangeMovieTableStructure1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007011148585_ChangeMovieTableStructure2.cs" />
+    <Compile Include="Migrations\202007011148585_ChangeMovieTableStructure2.Designer.cs">
+      <DependentUpon>202007011148585_ChangeMovieTableStructure2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007011152466_ChangeMovieTableStructure3.cs" />
+    <Compile Include="Migrations\202007011152466_ChangeMovieTableStructure3.Designer.cs">
+      <DependentUpon>202007011152466_ChangeMovieTableStructure3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007011154518_ChangeMovieTableStructure4.cs" />
+    <Compile Include="Migrations\202007011154518_ChangeMovieTableStructure4.Designer.cs">
+      <DependentUpon>202007011154518_ChangeMovieTableStructure4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007011202007_ChangeMovieTableStructure5.cs" />
+    <Compile Include="Migrations\202007011202007_ChangeMovieTableStructure5.Designer.cs">
+      <DependentUpon>202007011202007_ChangeMovieTableStructure5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007011202452_ChangeMovieTableStructure6.cs" />
+    <Compile Include="Migrations\202007011202452_ChangeMovieTableStructure6.Designer.cs">
+      <DependentUpon>202007011202452_ChangeMovieTableStructure6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007011212233_ChangeMovieTableStructure7.cs" />
+    <Compile Include="Migrations\202007011212233_ChangeMovieTableStructure7.Designer.cs">
+      <DependentUpon>202007011212233_ChangeMovieTableStructure7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007020536061_ChangeMovieModel.cs" />
+    <Compile Include="Migrations\202007020536061_ChangeMovieModel.Designer.cs">
+      <DependentUpon>202007020536061_ChangeMovieModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007030931210_ChangeMovieModel1.cs" />
+    <Compile Include="Migrations\202007030931210_ChangeMovieModel1.Designer.cs">
+      <DependentUpon>202007030931210_ChangeMovieModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModel\ManageViewModels.cs" />
+    <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsIfAMember.cs" />
+    <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\CustomerFormViewModel.cs" />
+    <Compile Include="ViewModel\MovieFormViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\RandomMovieViewModel.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -235,6 +366,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Movies\Random.cshtml" />
+    <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Movies\Index.cshtml" />
+    <Content Include="Views\Customers\Index.cshtml" />
+    <Content Include="Views\Customers\Details.cshtml" />
+    <Content Include="Views\Movies\Details.cshtml" />
+    <Content Include="Views\Customers\CustomerForm.cshtml" />
+    <Content Include="Views\Movies\MovieForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -251,6 +390,89 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202006291617374_InitialModel.resx">
+      <DependentUpon>202006291617374_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006291646159_AddIsSubscribedToCustomer.resx">
+      <DependentUpon>202006291646159_AddIsSubscribedToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006291652451_AddMembershipType.resx">
+      <DependentUpon>202006291652451_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006291704211_PopulateMembershipTypes.resx">
+      <DependentUpon>202006291704211_PopulateMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006291716452_ApplyAnnotationsToCustomerName.resx">
+      <DependentUpon>202006291716452_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006291806213_CreateNameColumnMemebershipType.resx">
+      <DependentUpon>202006291806213_CreateNameColumnMemebershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006291807301_AddMemebershipTypeNames.resx">
+      <DependentUpon>202006291807301_AddMemebershipTypeNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006291820433_AddBirthDateToCustomer.resx">
+      <DependentUpon>202006291820433_AddBirthDateToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006291832081_AddBirthDateToCustomer1.resx">
+      <DependentUpon>202006291832081_AddBirthDateToCustomer1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300526406_AddGenreToMovie.resx">
+      <DependentUpon>202006300526406_AddGenreToMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300529110_AddGenreData.resx">
+      <DependentUpon>202006300529110_AddGenreData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300545078_ChangeGenreIdToByte.resx">
+      <DependentUpon>202006300545078_ChangeGenreIdToByte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300554113_ModifyMovieModel.resx">
+      <DependentUpon>202006300554113_ModifyMovieModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300600570_ModifyMovieModel1.resx">
+      <DependentUpon>202006300600570_ModifyMovieModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300605342_ModifyMovieModel2.resx">
+      <DependentUpon>202006300605342_ModifyMovieModel2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300607498_ModifyMovieModel3.resx">
+      <DependentUpon>202006300607498_ModifyMovieModel3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202006300609390_SetDefaultDateTimeToCreatedDate.resx">
+      <DependentUpon>202006300609390_SetDefaultDateTimeToCreatedDate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007011130392_ChangeMovieTableStructure.resx">
+      <DependentUpon>202007011130392_ChangeMovieTableStructure.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007011146301_ChangeMovieTableStructure1.resx">
+      <DependentUpon>202007011146301_ChangeMovieTableStructure1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007011148585_ChangeMovieTableStructure2.resx">
+      <DependentUpon>202007011148585_ChangeMovieTableStructure2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007011152466_ChangeMovieTableStructure3.resx">
+      <DependentUpon>202007011152466_ChangeMovieTableStructure3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007011154518_ChangeMovieTableStructure4.resx">
+      <DependentUpon>202007011154518_ChangeMovieTableStructure4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007011202007_ChangeMovieTableStructure5.resx">
+      <DependentUpon>202007011202007_ChangeMovieTableStructure5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007011202452_ChangeMovieTableStructure6.resx">
+      <DependentUpon>202007011202452_ChangeMovieTableStructure6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007011212233_ChangeMovieTableStructure7.resx">
+      <DependentUpon>202007011212233_ChangeMovieTableStructure7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007020536061_ChangeMovieModel.resx">
+      <DependentUpon>202007020536061_ChangeMovieModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007030931210_ChangeMovieModel1.resx">
+      <DependentUpon>202007030931210_ChangeMovieModel1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
