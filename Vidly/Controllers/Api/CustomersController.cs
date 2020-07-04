@@ -46,7 +46,7 @@ namespace Vidly.Controllers.Api
         }
 
         [HttpPut]
-        public void UpdateCustomer(int id, Customer customer)
+        public Customer UpdateCustomer(int id, Customer customer)
         {
             if (!ModelState.IsValid)
             {
@@ -66,6 +66,7 @@ namespace Vidly.Controllers.Api
             customerInDb.MembershipTypeId = customer.MembershipTypeId;
 
             _context.SaveChanges();
+            return customerInDb;
 
         }
 
